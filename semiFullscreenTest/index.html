@@ -12,6 +12,7 @@ and open the template in the editor.
             body {
                 padding: 0;
                 margin: 0;
+                font-family: Arial, Verdana;
             }
 
             .video-wrap {
@@ -51,7 +52,7 @@ and open the template in the editor.
                 background-image: url("http://www.tigerlead.com/images/mediacenter/fullscreen_icon.png");
                 float: right;
             }
-            
+
             .playPause {
                 float: left;
                 background-image: url("http://staceysurfcamp.com/main//modules/mod_djimageslider/assets/pause.png");
@@ -69,12 +70,27 @@ and open the template in the editor.
                 max-width: inherit;
                 padding: 1%;
             }
+            .content-element .closeButton {
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                display: block;
+                width: 15px;
+                height: 15px;
+                background-color: #fff;
+                background-image: url("../images/closeButton.png");
+                background-repeat: no-repeat;
+            }
+
         </style>
     </head>
     <body>
+        <h2>HTML5 fullscreen test with Overlay</h2>
+        <p>Chrome & Firefox</p>
         <div class="video-wrap">
 
             <div class="xyz-image content-element">
+                <div class="closeButton imagelink"></div>
                 <image src="http://cdn.fora.tv/partners/partner_banner_unicef.jpg" />
             </div>
 
@@ -88,82 +104,95 @@ and open the template in the editor.
             </div>
         </div>
         <script>
+            $(document).ready(function() {
 
-            var windowheight = $(window).height() - 4;   // returns height of browser viewport
-            var windowwidth = $(window).width() - 5;
+                var windowheight = $(window).height() - 4;   // returns height of browser viewport
+                var windowwidth = $(window).width() - 5;
 
-            var videoStdWidth = $('video').width();
-            var videoStdHeight = $('video').height();
+                var videoStdWidth = $('video').width();
+                var videoStdHeight = $('video').height();
 
 
-            $('video').click(function() {
-                playPauseVideo(this);
+                $('video').click(function() {
+                    playPauseVideo(this);
+                });
+
+                $('.playPause').click(function() {
+                    playPauseVideo($('video')[0]);
+                });
+
+                function playPauseVideo(video) {
+                    if (video.paused) {
+                        video.play();
+                        $('.playPause').css("background-image", "url(http://staceysurfcamp.com/main//modules/mod_djimageslider/assets/pause.png)");
+                    } else {
+                        video.pause();
+                        $('.playPause').css("background-image", "url(http://www.centrixsoftware.com/sites/all/themes/centrix_v2/img/small-play-icon.png)");
+                    }
+                }
+
+
+                function toogleFullscreen() {
+                    var element = $('.video-wrap')[0];
+                    //check if fullscreen is already active
+                    if (document.webkitIsFullScreen) {
+                        // exit fullscreen if active
+                        document.webkitExitFullscreen();
+                    } else {
+                        // enter fullscreen if inactive
+                        enterFullscreen(element);
+                    }
+                }
+
+                // toggle fullscreen by double clicking at the video
+                $('video').dblclick(toogleFullscreen);
+                // toggle fullscreen by clicking on the icon
+                $('.toogle-fullscreen').click(toogleFullscreen);
+
+
+                function enterFullscreen(element) {
+                    if (element.mozRequestFullScreen) {
+                        element.mozRequestFullScreen();
+                    } else if (element.webkitRequestFullScreen) {
+                        element.webkitRequestFullScreen();
+                    }
+                }
+
+
+                function expandVideoSize() {
+                    // expand size to fit fullscreen
+                    $('.video-wrap').width('100%');
+                    $('.video-wrap').height('100%');
+                }
+
+                function resetVideoSize() {
+                    // reset the original standard size for the video
+                    $('.video-wrap').width(videoStdWidth);
+                    $('.video-wrap').height(videoStdHeight);
+                }
+
+                function onFullscreenChange() {
+                    if (document.webkitIsFullScreen) {
+                        expandVideoSize();
+                    } else {
+                        resetVideoSize();
+                    }
+                }
+
+                // recognize every changes of fullscreen mode
+                document.addEventListener("webkitfullscreenchange", function() {
+                    onFullscreenChange();
+                }, false);
+
+                ///////////////////////////////////////////////////////////////////
+                // content elements
+
+                $('.closeButton').click(function() {
+                    //close is clicked, so hide the element
+                    $(this).parent().fadeOut();
+                })
+
             });
-            
-            $('.playPause').click(function() {
-                playPauseVideo($('video')[0]);
-            });
-
-            function playPauseVideo(video) {
-                if (video.paused) {
-                    video.play();
-                    $('.playPause').css("background-image", "url(http://staceysurfcamp.com/main//modules/mod_djimageslider/assets/pause.png)");
-                } else {
-                    video.pause();
-                    $('.playPause').css("background-image", "url(http://www.centrixsoftware.com/sites/all/themes/centrix_v2/img/small-play-icon.png)");
-                }
-            }
-
-
-            $('.toogle-fullscreen').click(function() {
-                console.log("Fullscreen icon clicked");
-
-                var element = $('.video-wrap')[0];
-                //check if fullscreen is already active
-                if (document.webkitIsFullScreen) {
-                    // exit fullscreen if active
-                    document.webkitExitFullscreen();
-                } else {
-                    // enter fullscreen if inactive
-                    enterFullscreen(element);
-                }
-            });
-
-
-            function enterFullscreen(element) {
-                if (element.mozRequestFullScreen) {
-                    element.mozRequestFullScreen();
-                } else if (element.webkitRequestFullScreen) {
-                    element.webkitRequestFullScreen();
-                }
-            }
-
-
-            function expandVideoSize() {
-                // expand size to fit fullscreen
-                $('.video-wrap').width('100%');
-                $('.video-wrap').height('100%');
-            }
-
-            function resetVideoSize() {
-                // reset the original standard size for the video
-                $('.video-wrap').width(videoStdWidth);
-                $('.video-wrap').height(videoStdHeight);
-            }
-
-            function onFullscreenChange() {
-                if (document.webkitIsFullScreen) {
-                    expandVideoSize();
-                } else {
-                    resetVideoSize();
-                }
-            }
-
-            // recognize every changes of fullscreen mode
-            document.addEventListener("webkitfullscreenchange", function() {
-                onFullscreenChange();
-            }, false);
-
         </script>
     </body>
 </html>
