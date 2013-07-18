@@ -1,0 +1,168 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+        <style>
+            body {
+                padding: 0;
+                margin: 0;
+            }
+
+            .video-wrap {
+                position: relative;
+                width: 640px;
+                height: 360px;
+                background-color: #000;
+            }
+            video {
+                width: 100%;
+                height: 100%;
+            }
+
+            .video-navigation-bar {
+                height: 30px;
+                position: absolute;
+                width: 100%;
+                bottom: 0;
+                display: none;
+                background-color: rgba(0, 0, 0, 0.6);
+                border-radius: 10px 10px 0 0;
+            }
+
+            .video-wrap:hover .video-navigation-bar {
+                display: block;   
+            }
+
+            .video-navigation-bar .button {
+                width: 20px;
+                height: 20px;
+                display: block;
+                margin: 5px;
+                background-repeat: no-repeat;
+            }
+
+            .semi-fullscreen {
+                background-image: url("http://www.tigerlead.com/images/mediacenter/fullscreen_icon.png");
+                float: right;
+            }
+            
+            .playPause {
+                float: left;
+                background-image: url("http://staceysurfcamp.com/main//modules/mod_djimageslider/assets/pause.png");
+            }
+
+            .content-element {
+                position: absolute;
+                width: 100%;
+                display: block;
+                text-align: center;
+            }
+
+            .content-element img {
+                width: 98%;
+                max-width: inherit;
+                padding: 1%;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="video-wrap">
+
+            <div class="xyz-image content-element">
+                <image src="http://cdn.fora.tv/partners/partner_banner_unicef.jpg" />
+            </div>
+
+            <video autoplay preload="auto">  
+                <source src="../videos/big_buck_bunny.mp4" type='video/mp4' />  
+            </video>
+            <div class="video-navigation-bar">
+                <div class="playPause button"></div>
+                <div class="semi-fullscreen toogle-fullscreen button"></div>
+            </div>
+        </div>
+        <script>
+
+            var windowheight = $(window).height() - 4;   // returns height of browser viewport
+            var windowwidth = $(window).width() - 5;
+
+            var videoStdWidth = $('video').width();
+            var videoStdHeight = $('video').height();
+
+
+            $('video').click(function() {
+                playPauseVideo(this);
+            });
+            
+            $('.playPause').click(function() {
+                playPauseVideo($('video')[0]);
+            });
+
+            function playPauseVideo(video) {
+                if (video.paused) {
+                    video.play();
+                    $('.playPause').css("background-image", "url(http://staceysurfcamp.com/main//modules/mod_djimageslider/assets/pause.png)");
+                } else {
+                    video.pause();
+                    $('.playPause').css("background-image", "url(http://www.centrixsoftware.com/sites/all/themes/centrix_v2/img/small-play-icon.png)");
+                }
+            }
+
+
+            $('.toogle-fullscreen').click(function() {
+                console.log("Fullscreen icon clicked");
+
+                var element = $('.video-wrap')[0];
+                //check if fullscreen is already active
+                if (document.webkitIsFullScreen) {
+                    // exit fullscreen if active
+                    document.webkitExitFullscreen();
+                } else {
+                    // enter fullscreen if inactive
+                    enterFullscreen(element);
+                }
+            });
+
+
+            function enterFullscreen(element) {
+                if (element.mozRequestFullScreen) {
+                    element.mozRequestFullScreen();
+                } else if (element.webkitRequestFullScreen) {
+                    element.webkitRequestFullScreen();
+                }
+            }
+
+
+            function expandVideoSize() {
+                // expand size to fit fullscreen
+                $('.video-wrap').width('100%');
+                $('.video-wrap').height('100%');
+            }
+
+            function resetVideoSize() {
+                // reset the original standard size for the video
+                $('.video-wrap').width(videoStdWidth);
+                $('.video-wrap').height(videoStdHeight);
+            }
+
+            function onFullscreenChange() {
+                if (document.webkitIsFullScreen) {
+                    expandVideoSize();
+                } else {
+                    resetVideoSize();
+                }
+            }
+
+            // recognize every changes of fullscreen mode
+            document.addEventListener("webkitfullscreenchange", function() {
+                onFullscreenChange();
+            }, false);
+
+        </script>
+    </body>
+</html>
