@@ -110,9 +110,6 @@ and open the template in the editor.
         <script>
             $(document).ready(function() {
 
-                var windowheight = $(window).height() - 4;   // returns height of browser viewport
-                var windowwidth = $(window).width() - 5;
-
                 var videoStdWidth = $('video').width();
                 var videoStdHeight = $('video').height();
 
@@ -139,11 +136,11 @@ and open the template in the editor.
                 function toogleFullscreen() {
                     var element = $('.video-wrap')[0];
                     //check if fullscreen is already active
-                    if (document.webkitIsFullScreen) {
-                        // exit fullscreen if active
-                        document.webkitExitFullscreen();
-                    } else {
+                    if (document.webkitIsFullScreen || document.mozFullScreen) {
+                       exitFullscreen();
+                    } else if (!document.webkitIsFullScreen && !document.webkitIsFullScreen) {
                         // enter fullscreen if inactive
+                        console.log('will enter fullscreen');
                         enterFullscreen(element);
                     }
                 }
@@ -159,6 +156,14 @@ and open the template in the editor.
                         element.mozRequestFullScreen();
                     } else if (element.webkitRequestFullScreen) {
                         element.webkitRequestFullScreen();
+                    }
+                }
+
+                function exitFullscreen() {
+                    if (document.mozCancelFullScreen) {
+                        document.mozCancelFullScreen();
+                    } else if (document.webkitExitFullscreen) {
+                        document.webkitExitFullscreen();
                     }
                 }
 
