@@ -15,7 +15,7 @@ and open the template in the editor.
                 font-family: Arial, Verdana;
             }
 
-            .video-wrap {
+            .video-wrap, #canvas {
                 position: relative;
                 width: 640px;
                 height: 360px;
@@ -107,6 +107,9 @@ and open the template in the editor.
                 <div class="semi-fullscreen toogle-fullscreen button"></div>
             </div>
         </div>
+
+        <!-----CANVAS---------------------------------------------->
+
         <script>
             $(document).ready(function() {
 
@@ -137,7 +140,7 @@ and open the template in the editor.
                     var element = $('.video-wrap')[0];
                     //check if fullscreen is already active
                     if (document.webkitIsFullScreen || document.mozFullScreen) {
-                       exitFullscreen();
+                        exitFullscreen();
                     } else if (!document.webkitIsFullScreen && !document.webkitIsFullScreen) {
                         // enter fullscreen if inactive
                         console.log('will enter fullscreen');
@@ -200,6 +203,7 @@ and open the template in the editor.
                     //close is clicked, so hide the element
                     $(this).parent().fadeOut();
                 })
+
 
             });
         </script>

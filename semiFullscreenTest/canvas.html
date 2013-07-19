@@ -1,0 +1,78 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Canvas Fullscreen Demo</title>
+        <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+
+        <style>
+            body {
+                padding: 0;
+                margin: 0;
+                font-family: Arial, Verdana;
+            }
+
+            video {
+                display: none;
+                width: 640px;
+                height: 360px;
+            }
+
+            #canvas {
+                width: 100%;
+                height: 100%;
+                display: block;
+                background-color: #000;
+            }
+        </style>
+    </head>
+    <body>
+
+        <canvas id=canvas></canvas>
+
+
+        <video autoplay preload="auto">  
+            <source src="../videos/big_buck_bunny.mp4" type='video/mp4' /> 
+            <source src="../videos/big_buck_bunny.webm" type='video/webm' />  
+        </video>
+
+        <script>
+            
+            /*
+             * Portrait und landscape beachten, canvas rotieren falls portrait etc...
+             */
+
+            $(document).ready(function() {
+
+                var viewportwidth = $(window).width();
+                var viewportheight = $(window).height();
+                
+                $('body').append('<p>' + viewportwidth + ' x ' + viewportheight + '</p>');
+
+                //------------CANVAS---------------
+
+                var canvas = $('#canvas')[0];
+                var ctx = canvas.getContext('2d');
+                var video = $('video')[0];
+
+                video.addEventListener('play', function() {
+                    var $this = this; //cache
+                    (function loop() {
+                        if (!$this.paused && !$this.ended) {
+                            ctx.drawImage($this, 0, 0);
+                            setTimeout(loop, 1000 / 30); // drawing at 30fps
+                        }
+                    })();
+                }, 0);
+
+            });
+
+        </script>
+
+    </body>
+</html>
