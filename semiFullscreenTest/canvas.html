@@ -6,7 +6,7 @@ and open the template in the editor.
 <html>
     <head>
         <title>Canvas Fullscreen Demo</title>
-        <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
 
@@ -42,7 +42,7 @@ and open the template in the editor.
         </video>
 
         <script>
-            
+
             /*
              * Portrait und landscape beachten, canvas rotieren falls portrait etc...
              */
@@ -51,7 +51,7 @@ and open the template in the editor.
 
                 var viewportwidth = $(window).width();
                 var viewportheight = $(window).height();
-                
+
                 $('body').append('<p>' + viewportwidth + ' x ' + viewportheight + '</p>');
 
                 //------------CANVAS---------------
@@ -64,13 +64,28 @@ and open the template in the editor.
                     var $this = this; //cache
                     (function loop() {
                         if (!$this.paused && !$this.ended) {
-                            ctx.drawImage($this, 0, 0);
+                            ctx.drawImage($this, 0, 0, viewportwidth, viewportheight);
                             setTimeout(loop, 1000 / 30); // drawing at 30fps
                         }
                     })();
                 }, 0);
 
+
+                $('canvas').click(function() {
+                    playPauseVideo();
+                });
+
+                function playPauseVideo() {
+                    var video = $('video')[0];
+                    if (video.paused) {
+                        video.play();
+                    } else {
+                        video.pause();
+                    }
+                }
+
             });
+
 
         </script>
 
