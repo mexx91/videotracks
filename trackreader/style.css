@@ -10,3 +10,12 @@ root {
     display: block;
 }
 
+video {
+    width: 640px;
+    height: 360px;
+}
+
+.videoMainWrap .vtt-overlay-item {
+    position: absolute;
+    z-index: 10;
+}
