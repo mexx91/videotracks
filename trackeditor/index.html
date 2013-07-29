@@ -1,0 +1,57 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Track Generator</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <!-- Include jQuery JS Library / Framework -->
+        <script src="../common/jquery-1.10.2.min"></script>
+        <script src="js/trackeditor.js"></script>
+
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+        <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+
+        <!-- colorpicker script and css -->
+        <link rel="stylesheet" href="../common/colorpicker/css/colorpicker.css" type="text/css" />
+        <script type="text/javascript" src="../common/colorpicker/js/colorpicker.js"></script>
+        <script type="text/javascript" src="../common/colorpicker/js/eye.js"></script>
+
+        <link rel="stylesheet" type="text/css" href="css/trackeditor.css">
+    </head>
+    <body>
+        <div id="mainwrap">
+
+            <div id="videowrap">
+
+            </div>
+
+            <div id="settingswrap">
+
+                <div class="textsettings">
+                    <label>Text:</label><textarea id="textarea"></textarea>
+                    <label>Schriftgröße: </label>
+                    <table>
+                        <tr>
+                            <td id="td-fontsize-input"><input readonly id="fontsize-input" value="10" name="fontsize"/></td>
+                            <td id="td-fontsize-slider"><div id="fontsize-slider"></div></td>
+                        </tr>
+                    </table>
+
+                    <label>Schriftfarbe: </label><div id="colorSelector"><div></div></div>
+
+                </div>
+
+                <div class="hrefsettings">
+                    <label>Link: </label><input id="href" name="href" />
+                </div>
+
+                <button id="createCue">Cue erzeugen</button>
+
+            </div>
+
+        </div>
+    </body>
+</html>

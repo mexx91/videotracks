@@ -1,0 +1,75 @@
+/* 
+    Document   : trackeditor
+    Created on : 26.07.2013, 10:47:23
+    Author     : maximilian
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+
+body {
+    font-family: Sans, Arial, Verdana;
+}
+
+label {
+    display: block;
+}
+
+input, textarea, .inputlike {
+    width: 300px;
+}
+
+#fontsize-input {
+    width: 20px;
+}
+
+#fontsize-slider {
+    width: 250px;
+    float: right;
+}
+
+#td-fontsize-input {
+    width: 20px;
+}
+
+#td-fontsize-slider {
+    width: 275px;
+}
+
+.ui-slider .ui-slider-handle {
+    z-index: 1;  
+}
+
+#colorSelector {
+    position: relative;
+    width: 36px;
+    height: 36px;
+    background: url(../../common/colorpicker/images/select.png);
+}
+
+#colorSelector div {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 30px;
+    height: 30px;
+    background: url(../../common/colorpicker/images/select.png) center;
+}
+
+#videowrap {
+    float: left;
+    position: relative;
+    display: block;
+    width: 640px;
+    height: 360px;
+    background-color: #000;
+}
+
+#settingswrap {
+    float: left;
+    width: 340px;
+    padding: 10px;
+}

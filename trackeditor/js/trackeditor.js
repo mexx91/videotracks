@@ -1,0 +1,45 @@
+$(document).ready(function() {
+
+    $("#fontsize-slider").slider({
+        min: 10,
+        max: 50,
+        slide: function(event, ui) {
+            $('#fontsize-input').val(ui.value);
+        }
+    });
+
+
+    $('#colorSelector').ColorPicker({
+        color: '#0000ff',
+        onShow: function(colpkr) {
+            $(colpkr).fadeIn(500);
+            return false;
+        },
+        onHide: function(colpkr) {
+            $(colpkr).fadeOut(500);
+            return false;
+        },
+        onChange: function(hsb, hex, rgb) {
+            $('#colorSelector div').css('backgroundColor', '#' + hex);
+        }
+    });
+
+
+    $('#createCue').click(function() {
+        var text = $('#textarea').val();
+        var textcolor = $('#colorSelector').children().css("background-color");
+        var fontsize = $('#fontsize-input').val();
+        text = '<span style="color: ' + textcolor + '; font-size: ' + fontsize + 'px;">' + text + '</span>';
+
+        var href = $('#href').val();
+        if(href != '') {
+            text = '<a target="_blank" href="' + href + '">' + text + '</a>';
+        }
+
+        console.log(text);
+
+        $('#videowrap').append(text);
+    });
+
+
+});
