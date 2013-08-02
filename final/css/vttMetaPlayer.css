@@ -1,0 +1,96 @@
+/* 
+    Document   : vttMetaPlayer
+    Created on : 02.08.2013, 09:32:30
+    Author     : maximilian
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+
+.videoMainWrap {
+    background-color: #000;
+    position: relative;
+}
+
+.controlBar {
+    width: 100%;
+    height: 30px;
+    background-color: #191C21;
+    position: absolute;
+    bottom: 0;
+    display: block;
+}
+
+.controlBar .statusBar {
+    width: 100%;
+    height: 5px;
+    position: absolute;
+    top: 0;
+    background-color: #195962;
+}
+
+.controlBar .statusBar .status{
+    width: 0;
+    height: 100%;
+    position: absolute;
+    background-color: #F56F6C;
+}
+
+.controlBar .iconsBar {
+    width: 100%;
+    height: 22px;
+    position: absolute;
+    bottom: 0;
+    color: #FFFFFF;
+    font-size: 14px;
+}
+
+.controlBar .iconsBar i{
+    font-size: 18px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.controlBar .iconsBar span.time {
+    margin: 0 10px;
+}
+
+.controlBar .iconsBar i.icon-resize-full {
+    float: right;
+    margin-right: 10px;
+}
+
+/* on fullscreen mode */
+:-webkit-full-screen{
+    width: 100% !important;
+    height: 100% !important;
+    background: #000;
+}
+
+:-moz-full-screen {
+    width: 100% !important;
+    height: 100% !important;
+    background: #000;
+}
+
+/* on fullscreen mode */
+:-webkit-full-screen video{
+    width: 100% !important;
+    height: 100% !important;
+}
+
+:-moz-full-screen video{
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.controlBar.scrollDown {
+    bottom: -25px;
+}
+
+.controlBar.scrollDown:hover {
+    bottom: 0;
+}
