@@ -2,20 +2,22 @@
 window.onload = function() {
     $('document').ready(function() {
 
-//get the video element included in the website
+        var showMetaData = true;
+
+        //get the video element included in the website
         var video = $('video')[0];
         var videoElement = $(video);
         // get the dimensions of the video
         var videoElementWidth = videoElement.width();
         var videoElementHeight = videoElement.height();
         // build another container around the video for the overlay
-        wrapTheVideoWithDiv(videoElement, videoElementWidth, videoElementHeight);
+        wrapTheVideo(videoElement, videoElementWidth, videoElementHeight);
         // create custom video controls so we can use the fullscreen api
         createVideoControls(video);
         ////////////////////////////////////////////////////////////////////////////
         // Wraps each video with another div to display the extra content
         ////////////////////////////////////////////////////////////////////////////
-        function wrapTheVideoWithDiv(videoElement, vw, vh) {
+        function wrapTheVideo(videoElement, vw, vh) {
             // build a new div around the video element
             videoElement.wrap('<div class="videoMainWrap" style="position: relative; display: block;" />');
             //set its size to the same as the video
@@ -68,15 +70,15 @@ window.onload = function() {
             video.pause();
         });
         $('.metaButton').click(function() {
-            //show or hide metadata
-            console.log('meta on off noch implementieren!');
+            // Enable and Disable the visibility of additional content
+            showMetaData = !showMetaData;
         });
         $('.fullscreenButton').click(function() {
             //start fullscreen api
-            toogleFullscreen();
+            toggleFullscreen();
         });
 
-        function toogleFullscreen() {
+        function toggleFullscreen() {
             var element = $('.videoMainWrap')[0];
 
             if (document.webkitIsFullScreen || document.mozFullScreen || document.isFullscreen) {
@@ -106,10 +108,18 @@ window.onload = function() {
 
         // recognize every changes of fullscreen mode
         document.addEventListener("webkitfullscreenchange", function() {
-            if(!document.webkitIsFullScreen && !document.mozFullScreen && !document.isFullscreen) {
-                 $('.controlBar').removeClass('scrollDown');
-            }
+            onFullscreenExit();
         }, false);
+
+        document.addEventListener("mozfullscreenchange", function() {
+            onFullscreenExit();
+        }, false);
+
+        function onFullscreenExit() {
+            if (!document.webkitIsFullScreen && !document.mozFullScreen && !document.isFullscreen) {
+                $('.controlBar').removeClass('scrollDown');
+            }
+        }
 
         // Timecode in control bar
         video.addEventListener('loadedmetadata', function() {

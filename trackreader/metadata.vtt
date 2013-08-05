@@ -2,6 +2,9 @@ WEBVTT
 
 Test
 00:01.500 --> 00:06.000
+<a href="http://unicef.de" class="vtt-overlay-item" style="background-size: 100%;display: block; width: 100%; height: 70px;background-image: url('http://cdn.fora.tv/partners/partner_banner_unicef.jpg'); color: white"> Beschen Sie: </a>
+
+00:10.500 --> 00:16.000
 <a href="http://google.de" target="_blank" class="vtt-overlay-item" style="color: yellowgreen; background-color: rgba(0,0,0, 0.6); padding: 10px; top: 10px; left: 5px;">Juhu ein Hyperlink - Sensation</a>
 
 Nochmal

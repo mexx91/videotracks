@@ -24,15 +24,32 @@ $(document).ready(function() {
         }
     });
 
+    $('#background-color').ColorPicker({
+        color: '#0000ff',
+        onShow: function(colpkr) {
+            $(colpkr).fadeIn(500);
+            return false;
+        },
+        onHide: function(colpkr) {
+            $(colpkr).fadeOut(500);
+            return false;
+        },
+        onChange: function(hsb, hex, rgb) {
+            $('#background-color div').css('backgroundColor', '#' + hex);
+        }
+    });
+
 
     $('#createCue').click(function() {
         var text = $('#textarea').val();
         var textcolor = $('#colorSelector').children().css("background-color");
         var fontsize = $('#fontsize-input').val();
-        text = '<span style="color: ' + textcolor + '; font-size: ' + fontsize + 'px;">' + text + '</span>';
+        var backgroundColor = $('#background-color').children().css("background-color");
+        
+        text = '<span style="color: ' + textcolor + '; font-size: ' + fontsize + 'px; background-color:' + backgroundColor + '">' + text + '</span>';
 
         var href = $('#href').val();
-        if(href != '') {
+        if (href != '') {
             text = '<a target="_blank" href="' + href + '">' + text + '</a>';
         }
 

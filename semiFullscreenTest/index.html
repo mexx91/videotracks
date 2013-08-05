@@ -1,7 +1,3 @@
-<!--
-To change this template, choose Tools | Templates
-and open the template in the editor.
--->
 <!DOCTYPE html>
 <html>
     <head>
@@ -141,7 +137,7 @@ and open the template in the editor.
                     //check if fullscreen is already active
                     if (document.webkitIsFullScreen || document.mozFullScreen) {
                         exitFullscreen();
-                    } else if (!document.webkitIsFullScreen && !document.webkitIsFullScreen) {
+                    } else if (!document.webkitIsFullScreen && !document.mozIsFullScreen) {
                         // enter fullscreen if inactive
                         console.log('will enter fullscreen');
                         enterFullscreen(element);

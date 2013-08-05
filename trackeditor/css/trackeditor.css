@@ -43,20 +43,21 @@ input, textarea, .inputlike {
     z-index: 1;  
 }
 
-#colorSelector {
+#colorSelector, #background-color {
     position: relative;
     width: 36px;
     height: 36px;
     background: url(../../common/colorpicker/images/select.png);
 }
 
-#colorSelector div {
+#colorSelector div, #background-color div {
     position: absolute;
     top: 3px;
     left: 3px;
     width: 30px;
     height: 30px;
     background: url(../../common/colorpicker/images/select.png) center;
+    color: white;
 }
 
 #videowrap {
