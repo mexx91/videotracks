@@ -94,3 +94,8 @@ root {
 .controlBar.scrollDown:hover {
     bottom: 0;
 }
+
+
+.icon-paperclip.metaButton.off {
+    color: gray;
+}

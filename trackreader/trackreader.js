@@ -3,7 +3,7 @@
 ////////////////////////////////////////////////////////////////////////////
 var debug = true;
 var printDebug = false;
-var element
+var element;
 var currenttime;
 var duration;
 

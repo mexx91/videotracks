@@ -121,6 +121,25 @@ window.onload = function() {
             }
         }
 
+        // Change currentTime of the video
+        $('.statusBar').mouseover(function(e) {
+
+            $(this).click(function() {
+                // get the offset of the element
+                var parentOffset = $(this).parent().offset();
+                // calculate the current mouse position relative to the element offset
+                var mousePosX = e.pageX - parentOffset.left;
+                var width = $(this).width();
+                // calc the percentage of the position
+                var percentage = mousePosX / width * 100;
+                // round it
+                percentage = percentage.toFixed(2);
+                // jump to the calculatet time
+                var jumpToTime = video.duration * percentage / 100;
+                video.currentTime = jumpToTime.toFixed(2);
+            });
+        });
+
         // Timecode in control bar
         video.addEventListener('loadedmetadata', function() {
 
@@ -150,7 +169,7 @@ window.onload = function() {
         //increase the height of the timeline by hovering the video
         $('.videoMainWrap').on('mouseenter', function() {
             var statusBar = $(this).find('.statusBar');
-            statusBar.css({'top': '-3px', 'height': '8'});
+            statusBar.css({'top': '-4px', 'height': '9'});
         }).on('mouseleave', function() {
             var statusBar = $(this).find('.statusBar');
             statusBar.css({'top': '0', 'height': '5'});
