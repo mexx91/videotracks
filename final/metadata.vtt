@@ -1,0 +1,10 @@
+WEBVTT
+
+00:01.000 --> 01:00.000
+<a class="cue-item" href="http://www.bigbuckbunny.org/" target="_blank" style="text-decoration: none; width: 85px; padding: 3px; margin: 3px; top: 10px; left: 10px; color: #000; background-color: #fff;">Videoquelle: <br> <img src="http://www.qrcode-generator.de/getCode/?cht=qr&chl=http%3A%2F%2Fwww.bigbuckbunny.org%2F&chs=180x180&choe=UTF-8&chld=L|0"/><div style="font-size: 10px">bigbuckbunny.org</div></a>
+
+00:04.000 --> 00:08.000
+<div class="cue-item fullscreen-cue" style="bottom: 40px; right: 10px; color: #fff;"></div><script>if(document.webkitFullscreenEnabled && !document.webkitIsFullScreen) $('.fullscreen-cue').html('Vollbildmodus möglich <i class="icon-long-arrow-down" style="color: yellow; font-size: 24px;"></i>');</script>
+
+00:08.000 --> 00:18.000
+<div class="cue-item" style="bottom: 40px; left: 10px; color: #fff; text-align: right;">Die Zusatzinhalte können <br> auch deaktiviert werden <i class="icon-long-arrow-down" style="color: yellow; font-size: 20px;"></i></div>

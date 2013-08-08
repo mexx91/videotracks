@@ -72,6 +72,8 @@ window.onload = function() {
         $('.metaButton').click(function() {
             // Enable and Disable the visibility of additional content
             showMetaData = !showMetaData;
+            $(this).toggleClass('inactive');
+            $('.cue-item').remove();
         });
         $('.fullscreenButton').click(function() {
             //start fullscreen api
@@ -174,5 +176,50 @@ window.onload = function() {
             var statusBar = $(this).find('.statusBar');
             statusBar.css({'top': '0', 'height': '5'});
         });
+
+
+        ////////////////////////////////////////////////////////////////////////////
+        // Reading the cues
+        ////////////////////////////////////////////////////////////////////////////
+
+        // read the textTracks and get their cues
+        var cues = video.textTracks[0].cues;
+
+        $.each(cues, function(j, cue) {
+            console.log(cue);
+            // bind events for the entering cue
+            cue.onenter = function() {
+                cueEntered(this, video, j);
+            };
+
+            // and also one event for leaving it
+            cue.onexit = function() {
+                cueLeft(this, video, j);
+            };
+
+        });
+
+
+        ////////////////////////////////////////////////////////////////////////////
+        // Cue events on Entering and leaving
+        ////////////////////////////////////////////////////////////////////////////
+        function cueEntered(cue, video, j) {
+            console.log("Cue entered...");
+            //Prepend the text inside the cue to the videoMainWrap of the video where
+            // it belongs to. And wrap a div around with the unique cue id number (j)
+            // so that we can delete it later on when we exit the cue timestamp
+            if (showMetaData) {
+                $(video).parent().prepend('<span class="cue-item-wrap itemId' + j + '">' + cue.text + '</span>');
+            }
+        }
+
+        function cueLeft(cue, video, j) {
+            console.log("Cue left...");
+            // get the item which we want to delete
+            // 'j' is important to remove the right element
+            $(video).parent().find('.itemId' + j).remove();
+        }
+
+
     });
 };

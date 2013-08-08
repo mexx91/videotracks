@@ -91,7 +91,7 @@ $('document').ready(function() {
             //Prepend the text inside the cue to the videoMainWrap of the video where
             // it belongs to. And wrap a div around with the unique cue id number (j)
             // so that we can delete it later on when we exit the cue timestamp
-            $(video).parent().prepend('<div class="cue-item' + j + '" style="width:200px">' + cue.text + '</div>');
+            $(video).parent().prepend('<div class="cue-item cue-item' + j + '">' + cue.text + '</div>');
         }
 
         function cueLeft(cue, video, j) {
