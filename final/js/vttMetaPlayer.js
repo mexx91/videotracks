@@ -1,4 +1,3 @@
-
 window.onload = function() {
 
     // global variable to control if the additional content should be displayed
@@ -90,11 +89,11 @@ window.onload = function() {
         // add a class to the icon to change its color to display its status
         $(this).toggleClass('inactive');
         // remove all cue items
-        if(!showMetaData) {
+        if (!showMetaData) {
             $('.cue-item').remove();
         }
     });
-    
+
     $('.fullscreenButton').click(function() {
         //start fullscreen api
         toggleFullscreen();
@@ -182,10 +181,10 @@ window.onload = function() {
     // taken from: http://stackoverflow.com/questions/11792726/turn-seconds-into-hms-format-using-jquery
     function secondsToHMS(s) {
         // get the whole hours
-        var h = Math.floor(s / 3600); 
+        var h = Math.floor(s / 3600);
         s -= h * 3600;
         // get the remaining minutes
-        var m = Math.floor(s / 60); 
+        var m = Math.floor(s / 60);
         s -= m * 60;
         // check if it is neccessary to show the hours
         if (h > 0) {
@@ -215,6 +214,7 @@ window.onload = function() {
 
     // for each cue
     $.each(cues, function(j, cue) {
+        console.log(cue);
         // bind events for entering the cue
         cue.onenter = function() {
             cueEntered(this, video, j);
@@ -231,8 +231,8 @@ window.onload = function() {
     ////////////////////////////////////////////////////////////////////////////
     function cueEntered(cue, video, j) {
         /* prepend the text inside the cue to the videoMainWrap of the video where
-        * it belongs to. And wrap a div around with the unique cue id number (j)
-        * so that we can delete it later on when we exit the cue timestamp */
+         * it belongs to. And wrap a div around with the unique cue id number (j)
+         * so that we can delete it later on when we exit the cue timestamp */
         if (showMetaData) {
             $(video).parent().prepend('<span class="cue-item-wrap itemId' + j + '">' + cue.text + '</span>');
         }
