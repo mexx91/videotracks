@@ -6,14 +6,20 @@ WEBVTT
 00:09.000 --> 00:09.900
 <script>marker.setPosition(new google.maps.LatLng(49.644388,7.320386));</script>
 
-00:10.000 --> 00:11.900
+00:10.000 --> 00:10.900
 <script>marker.setPosition(new google.maps.LatLng(49.644374,7.320783));</script>
 
-00:13.000 --> 00:13.900
+00:11.000 --> 00:11.900
+<script>marker.setPosition(new google.maps.LatLng(49.644388,7.321056));</script>
+
+00:12.000 --> 00:12.900
 <script>marker.setPosition(new google.maps.LatLng(49.644374,7.321259));</script>
 
+00:13.000 --> 00:13.900
+<script>marker.setPosition(new google.maps.LatLng(49.64436,7.321764));</script>
+
 00:14.000 --> 00:14.900
-<script>marker.setPosition(new google.maps.LatLng(49.64436,7.321496));</script>
+<script>marker.setPosition(new google.maps.LatLng(49.644346,7.321968));</script>
 
 00:15.000 --> 00:15.900
 <script>marker.setPosition(new google.maps.LatLng(49.644377,7.322081));</script>
@@ -36,6 +42,9 @@ WEBVTT
 00:21.000 --> 00:21.900
 <script>marker.setPosition(new google.maps.LatLng(49.645006,7.323631));</script>
 
+00:22.000 --> 00:22.900
+<script>marker.setPosition(new google.maps.LatLng(49.644933,7.323615));</script>
+
 00:23.000 --> 00:23.900
 <script>marker.setPosition(new google.maps.LatLng(49.644694,7.323621));</script>
 
@@ -46,7 +55,13 @@ WEBVTT
 <script>marker.setPosition(new google.maps.LatLng(49.644367,7.323555));</script>
 
 00:27.000 --> 00:27.900
-<script>marker.setPosition(new google.maps.LatLng(49.644318,7.323529));</script>
+<script>marker.setPosition(new google.maps.LatLng(49.644318,7.323497));</script>
+
+00:28.000 --> 00:28.900
+<script>marker.setPosition(new google.maps.LatLng(49.644311,7.322923));</script>
+
+00:29.000 --> 00:29.900
+<script>marker.setPosition(new google.maps.LatLng(49.644315,7.322607));</script>
 
 00:30.000 --> 00:30.900
 <script>marker.setPosition(new google.maps.LatLng(49.644322,7.322526));</script>
@@ -68,3 +83,21 @@ WEBVTT
 
 00:52.000 --> 00:52.900
 <script>marker.setPosition(new google.maps.LatLng(49.64304,7.321099));</script>
+
+00:56.000 --> 00:56.900
+<script>marker.setPosition(new google.maps.LatLng(49.642957,7.321721));</script>
+
+00:57.000 --> 00:57.900
+<script>marker.setPosition(new google.maps.LatLng(49.642839,7.321774));</script>
+
+00:58.000 --> 00:58.900
+<script>marker.setPosition(new google.maps.LatLng(49.642693,7.321732));</script>
+
+01:00.000 --> 01:00.900
+<script>marker.setPosition(new google.maps.LatLng(49.642644,7.321453));</script>
+
+01:01.000 --> 01:01.900
+<script>marker.setPosition(new google.maps.LatLng(49.642679,7.320959));</script>
+
+01:01.000 --> 01:01.900
+<script>marker.setPosition(new google.maps.LatLng(49.642693,7.320584));</script>
