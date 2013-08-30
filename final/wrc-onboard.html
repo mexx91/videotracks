@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>vttMetaPlayer Prototype</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <!-- Include jQuery JS Library / Framework -->
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script src="js/vttMetaPlayer.js"></script>
+
+        <link rel="stylesheet" type="text/css" href="css/vttMetaPlayer.css">
+        <!-- icon fonts from http://fortawesome.github.io/Font-Awesome/get-started/ -->
+        <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+
+        <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+
+        <style>
+            #map, .videoMainWrap {
+                float: left;
+            }
+        </style>
+
+    </head>
+    <body>
+
+        <video controls style="width: 640px; height: 360px">  
+            <source src="../videos/wrc_panzerplatte.mp4" type='video/mp4' />
+            <source src="../videos/wrc_panzerplatte.webm" type='video/webm' /> 
+            <track kind="metadata" src="metadata/wrc-onboard.vtt" default>
+        </video>
+
+        <div id="map" style="width: 550px; height: 390px"></div>
+
+
+        <script type="text/javascript">
+            var marker;
+            
+            function initialize() {
+                var latlng = new google.maps.LatLng(49.644513, 7.323589);
+                var myOptions = {
+                    zoom: 16,
+                    center: latlng,
+                    disableDefaultUI: true,
+                    mapTypeId: google.maps.MapTypeId.SATELLITE
+                };
+                var map = new google.maps.Map(document.getElementById("map"), myOptions);
+
+                marker = new google.maps.Marker({
+                    //position: latlng,
+                    map: map,
+                    title: 'S. Loeb'
+                });
+            }
+            initialize();
+        </script>
+    </body>
+</html>
